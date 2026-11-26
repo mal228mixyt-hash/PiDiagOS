@@ -1,5 +1,4 @@
 # PiDiagOS
-![Uploading Gemini_Generated_Image_wxqqjywxqqjywxqq.jpg…]()
 
 A diagnostic OS for Raspberry Pi 3 / 4 / 5 (including 400, 500, CM3/CM4/CM5).
 The board boots, runs its own diagnostics, and displays the results in a browser — no monitor or
