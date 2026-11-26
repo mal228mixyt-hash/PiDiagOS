@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: User Guide
+    url: https://github.com/OWNER/PiDiagOS/blob/main/docs/USER_GUIDE.md
+    about: Flashing, first boot, panel, SSH, troubleshooting
+  - name: Build Help
+    url: https://github.com/OWNER/PiDiagOS/blob/main/docs/BUILD.md
+    about: Docker, WSL2, environment variables

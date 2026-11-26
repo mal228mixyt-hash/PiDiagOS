@@ -1,0 +1,11 @@
+[Unit]
+Description=PiDiagOS Wi-Fi access point self-check
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/pidiag-ap-check.py
+StandardOutput=journal+console
+StandardError=journal+console
+TimeoutStartSec=180

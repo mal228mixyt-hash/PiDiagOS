@@ -1,0 +1,15 @@
+[Unit]
+Description=PiDiagOS startup hardware check
+After=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/rpi-diag-runner.py --skip-stress
+StandardOutput=journal+console
+StandardError=journal+console
+RemainAfterExit=yes
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target

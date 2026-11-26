@@ -1,0 +1,69 @@
+name: Bug report
+description: The board fails to boot, diagnostics are incorrect, or the panel does not open
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check the Troubleshooting section in [the user guide](../../docs/USER_GUIDE.md) before opening an issue.
+
+  - type: input
+    id: board
+    attributes:
+      label: Board
+      description: Model and revision (for example, Raspberry Pi 4B Rev 1.4, Pi 3B+)
+      placeholder: Raspberry Pi 4 Model B Rev 1.4
+    validations:
+      required: true
+
+  - type: input
+    id: image
+    attributes:
+      label: Image version
+      description: From the release or the first line of `diag_boot.log`
+      placeholder: v1.0.0 / PiDiagOS boot log 2026-11-06T12:00:00
+    validations:
+      required: true
+
+  - type: dropdown
+    id: connection
+    attributes:
+      label: How are you connected to the panel?
+      options:
+        - PiDiagOS Wi-Fi network
+        - Ethernet through router, pidiag.local
+        - Ethernet through router, IP address
+        - Panel does not open
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Expected and actual behavior, including any error message
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: |
+        Paste `/boot/firmware/diag_boot.log` (from the card) or the output of
+        `journalctl -b | tail -100` over SSH. Do not include passwords.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks performed
+      options:
+        - label: Power supply rated for at least 3 A
+          required: false
+        - label: Card was fully written using Raspberry Pi Imager
+          required: false
+        - label: Problem persists after reboot
+          required: true

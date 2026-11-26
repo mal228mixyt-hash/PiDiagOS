@@ -1,0 +1,38 @@
+name: Feature request
+description: New diagnostic check, panel improvement, or board support
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: What is inconvenient or not currently checked?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should this work from the user's perspective?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What have you tried, and why did it not work?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Area
+      options:
+        - label: Diagnostic engine (`rpi-diag-runner.py`)
+        - label: Web panel
+        - label: Wi-Fi access point
+        - label: Image build
+        - label: Documentation

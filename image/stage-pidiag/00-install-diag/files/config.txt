@@ -1,0 +1,24 @@
+# PiDiagOS additions to /boot/firmware/config.txt (Pi 3 / 4 / 5).
+# This block is appended to pi-gen's default config.txt rather than replacing it;
+# otherwise, settings required for the 64-bit build (arm_64bit=1, etc.) are lost
+# and Pi 3/4 cannot find kernel8.img.
+# camera_auto_detect, display_auto_detect, and dtoverlay=vc4-kms-v3d are already
+# present in the default file, so they are not repeated.
+
+[all]
+# Wi-Fi regulatory domain: without it, firmware may not start the access point
+country=RU
+
+# Pair kernel8.img <-> initramfs8 and kernel_2712.img <-> initramfs_2712.
+# Required by overlayroot: without initramfs, the root filesystem remains writable.
+auto_initramfs=1
+
+# Interfaces used by diagnostics
+dtparam=i2c_arm=on
+dtparam=spi=on
+
+[pi5]
+# Match ACT LED polarity with Pi 3/4 (it is inverted on Pi 5)
+dtparam=act_led_activelow=off
+# RP1 UART0 for early boot debugging
+enable_rp1_uart=1

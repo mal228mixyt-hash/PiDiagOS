@@ -1,0 +1,32 @@
+# Kernel images (kernel8.img for Pi 3/4, kernel_2712.img for Pi 5), firmware, and
+# initramfs-tools are installed by stage0; raspi-utils/usbutils by stage2. This
+# list contains only packages missing from the base stages and required by the
+# diagnostic runner and web panel.
+
+# Protect the root filesystem with OverlayFS over tmpfs
+overlayroot
+
+# CPU stress test
+stress
+
+# i2cdetect, lsusb, ip
+i2c-tools
+iproute2
+
+# vcgencmd/pinctrl and python3 are already in the image, but the runner requires
+# them, so these dependencies are listed explicitly.
+raspi-utils
+python3
+
+# Access point: DHCP/DNS for connected devices
+dnsmasq-base
+
+# Advertise pidiag.local on the local network (access without knowing the IP)
+avahi-daemon
+libnss-mdns
+
+# iwgetid: the panel displays the SSID connected to the board
+wireless-tools
+
+# SSH is enabled by default (PIDIAG_SSH=1)
+openssh-server

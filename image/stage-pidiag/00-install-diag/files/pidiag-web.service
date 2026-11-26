@@ -1,0 +1,13 @@
+[Unit]
+Description=PiDiagOS web panel
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/pidiag-web.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

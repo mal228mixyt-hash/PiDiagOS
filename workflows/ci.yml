@@ -1,0 +1,53 @@
+name: Syntax checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Python syntax
+        run: python -m py_compile image/stage-pidiag/00-install-diag/files/*.py imager/*.py
+
+      - name: Shell syntax
+        run: |
+          bash -n build.sh
+          bash -n image/stage-pidiag/00-install-diag/01-run.sh
+          bash -n image/stage-pidiag/prerun.sh
+
+      - name: shellcheck (errors only)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq shellcheck
+          shellcheck -S error -e SC1091,SC2154,SC2086 build.sh \
+            image/stage-pidiag/00-install-diag/01-run.sh \
+            image/stage-pidiag/prerun.sh
+
+      - name: JSON validity
+        run: python -c "import glob,json; [json.load(open(p, encoding='utf-8')) for p in glob.glob('imager/*.json')]"
+
+      - name: No images or secrets in index
+        run: |
+          if git ls-files | grep -Eq '\.img(\.xz)?$|web-password$|user-password$|ssh-enabled$'; then
+            echo "Artifacts or secrets found in the index" >&2
+            exit 1
+          fi
+
+      - name: check-wifi.bat uses CRLF without BOM
+        run: |
+          python - <<'PY'
+          data = open("check-wifi.bat", "rb").read()
+          assert b"\r\n" in data, "check-wifi.bat must use CRLF"
+          assert not data.startswith(b"\xef\xbb\xbf"), "BOM breaks the first line of the batch file"
+          print("ok")
+          PY

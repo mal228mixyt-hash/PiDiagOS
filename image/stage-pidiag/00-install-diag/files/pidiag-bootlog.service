@@ -1,0 +1,14 @@
+[Unit]
+Description=PiDiagOS boot log to boot partition
+After=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/pidiag-bootlog.sh
+StandardOutput=journal+console
+StandardError=journal+console
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target

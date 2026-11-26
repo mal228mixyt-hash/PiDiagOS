@@ -1,0 +1,70 @@
+{
+  "imager": {
+    "latest_version": "2.0.0",
+    "url": "https://www.raspberrypi.com/software/",
+    "devices": [
+      {
+        "name": "Raspberry Pi 5",
+        "tags": [
+          "pi5"
+        ],
+        "default": true,
+        "icon": "https://downloads.raspberrypi.com/imager/icons/RPi_5.png",
+        "description": "Raspberry Pi 5, 500, 500+, and Compute Module 5",
+        "matching_type": "inclusive",
+        "capabilities": [
+          "usb_otg",
+          "rpi_connect"
+        ]
+      },
+      {
+        "name": "Raspberry Pi 4",
+        "tags": [
+          "pi4"
+        ],
+        "default": false,
+        "icon": "https://downloads.raspberrypi.com/imager/icons/RPi_4.png",
+        "description": "Raspberry Pi 4 Model B, 400, and Compute Module 4 / 4S",
+        "matching_type": "inclusive",
+        "capabilities": [
+          "usb_otg",
+          "rpi_connect"
+        ]
+      },
+      {
+        "name": "Raspberry Pi 3",
+        "tags": [
+          "pi3"
+        ],
+        "default": false,
+        "icon": "https://downloads.raspberrypi.com/imager/icons/RPi_3.png",
+        "description": "Raspberry Pi 3 Model B, 3B+, and Compute Module 3 / 3+",
+        "matching_type": "inclusive",
+        "capabilities": []
+      }
+    ]
+  },
+  "os_list": [
+    {
+      "name": "PiDiagOS — Raspberry Pi Diagnostics (64-bit)",
+      "description": "Automatic diagnostics for Raspberry Pi 3/4/5: board revision and RAM authenticity, power and PMIC, CPU stress test, GPIO, and JSON/HTML browser reports. PiDiagOS Wi-Fi access point and SSH are enabled.",
+      "icon": "https://downloads.raspberrypi.com/imager/icons/RPi_5.png",
+      "url": "https://example.invalid/PiDiagOS.img.xz",
+      "extract_size": 0,
+      "extract_sha256": "FILL_WITH_MAKE_MANIFEST",
+      "image_download_size": 0,
+      "image_download_sha256": "FILL_WITH_MAKE_MANIFEST",
+      "release_date": "2026-01-01",
+      "init_format": "systemd",
+      "devices": [
+        "pi3",
+        "pi4",
+        "pi5"
+      ],
+      "capabilities": [
+        "i2c",
+        "spi"
+      ]
+    }
+  ]
+}
