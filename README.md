@@ -1,8 +1,11 @@
+![PiDiagOS Banner](assets/banner.jpg)
+
 # PiDiagOS
 
 A diagnostic OS for Raspberry Pi 3 / 4 / 5 (including 400, 500, CM3/CM4/CM5).
-The board boots, runs its own diagnostics, and displays the results in a browser — no monitor or
-keyboard required.
+The board boots, runs its own diagnostics, and displays the results in a browser — no monitor or keyboard required.
+
+![PiDiagOS Diagnostic Pipeline](assets/pipeline.jpg)
 
 ```
 Power → board revision and RAM authenticity → get_throttled and PMIC →
