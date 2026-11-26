@@ -20,7 +20,7 @@ JSON/HTML report in the browser and on a USB drive
 
 ## Quick Start
 
-1. Download `PiDiagOS.img.xz` from [Releases](../../releases) and verify its checksum.
+1. Download `PiDiagOS.img.xz` from [https://drive.google.com/file/d/1EFu4hYCiIyNnwlO2Ig4vQRpYBNxJEAAZ/view?usp=sharing) and verify its checksum.
 2. Write the image to an SD card of at least 8 GB using Raspberry Pi Imager → “Use custom image”.
 3. Insert the card into the board and connect power (5 V, 3 A for Pi 4/5).
 4. Connect to the **PiDiagOS** Wi-Fi network (password: `PiDiagOS`).
